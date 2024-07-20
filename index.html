@@ -591,3 +591,222 @@ Diagram kelas UML membantu dalam memvisualisasikan struktur kelas dalam sebuah s
 
    </br>
 </pre>
+
+
+<b> (7) Contoh: Menjalankan serangkaian tes unit untuk memeriksa
+fungsi-fungsi individual dalam program </b>
+   <br>
+<pre>
+```
+
+Berikut adalah contoh bagaimana menjalankan serangkaian tes unit untuk memeriksa fungsi-fungsi individual dalam program menggunakan Python dan framework unittest.
+
+Contoh Program
+Mari kita anggap kita memiliki sebuah modul math_operations.py yang berisi beberapa fungsi matematika dasar.
+
+python
+Salin kode
+# math_operations.py
+def add(a, b):
+    return a + b
+
+def subtract(a, b):
+    return a - b
+
+def multiply(a, b):
+    return a * b
+
+def divide(a, b):
+    if b == 0:
+        raise ValueError("Cannot divide by zero")
+    return a / b
+Menulis Tes Unit
+Kita akan menulis tes unit untuk memeriksa setiap fungsi dalam modul math_operations.py.
+
+python
+Salin kode
+# test_math_operations.py
+import unittest
+from math_operations import add, subtract, multiply, divide
+
+class TestMathOperations(unittest.TestCase):
+    def test_add(self):
+        self.assertEqual(add(1, 2), 3)
+        self.assertEqual(add(-1, 1), 0)
+        self.assertEqual(add(-1, -1), -2)
+
+    def test_subtract(self):
+        self.assertEqual(subtract(10, 5), 5)
+        self.assertEqual(subtract(-1, 1), -2)
+        self.assertEqual(subtract(-1, -1), 0)
+
+    def test_multiply(self):
+        self.assertEqual(multiply(3, 7), 21)
+        self.assertEqual(multiply(-1, 1), -1)
+        self.assertEqual(multiply(-1, -1), 1)
+
+    def test_divide(self):
+        self.assertEqual(divide(10, 2), 5)
+        self.assertEqual(divide(-1, 1), -1)
+        self.assertEqual(divide(-1, -1), 1)
+        with self.assertRaises(ValueError):
+            divide(10, 0)
+
+if __name__ == '__main__':
+    unittest.main()
+Menjalankan Tes Unit
+Untuk menjalankan tes unit, kita dapat menggunakan perintah berikut di terminal:
+
+sh
+Salin kode
+python -m unittest test_math_operations.py
+Output Tes
+Jika semua tes berhasil, output akan terlihat seperti ini:
+
+markdown
+Salin kode
+....
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+OK
+Jika ada tes yang gagal, output akan memberikan rincian tentang tes mana yang gagal dan mengapa.
+
+Penjelasan
+Import Modul dan Fungsi:
+
+Mengimpor modul unittest.
+Mengimpor fungsi-fungsi yang akan diuji dari math_operations.py.
+Kelas Tes:
+
+Membuat kelas TestMathOperations yang merupakan subclass dari unittest.TestCase.
+Metode Tes:
+
+test_add: Menguji fungsi add.
+test_subtract: Menguji fungsi subtract.
+test_multiply: Menguji fungsi multiply.
+test_divide: Menguji fungsi divide dan memeriksa pengecualian ketika membagi dengan nol.
+Menjalankan Tes:
+
+Memanggil unittest.main() untuk menjalankan semua tes unit yang didefinisikan dalam kelas TestMathOperations.
+Dengan menulis dan menjalankan tes unit, kita dapat memastikan bahwa fungsi-fungsi individual dalam program berfungsi dengan benar dan sesuai dengan yang diharapkan. Ini membantu dalam mengidentifikasi dan memperbaiki bug lebih awal dalam proses pengembangan
+   
+</br>
+</pre>
+
+
+<b> (8)Contoh: Menggunakan Git sebagai standar alat kontrol versi
+untuk mengelola perubahan dalam kode sumber. </b>
+   <br>
+<pre>
+```
+
+  Berikut adalah contoh bagaimana menggunakan Git sebagai alat kontrol versi standar untuk mengelola perubahan dalam kode sumber. Git adalah sistem kontrol versi terdistribusi yang memungkinkan banyak pengembang bekerja pada sebuah proyek secara bersamaan tanpa mengganggu pekerjaan satu sama lain.
+
+Langkah-Langkah Dasar Menggunakan Git
+Instal Git
+
+Untuk menginstal Git, kunjungi situs resmi Git dan ikuti petunjuk instalasi untuk sistem operasi Anda.
+Konfigurasi Git
+
+Setelah menginstal Git, Anda perlu mengonfigurasinya dengan informasi pengguna Anda:
+sh
+Salin kode
+git config --global user.name "Nama Anda"
+git config --global user.email "email@anda.com"
+Inisialisasi Repositori Git
+
+Untuk membuat repositori Git baru, buka terminal dan navigasi ke direktori proyek Anda, kemudian jalankan:
+sh
+Salin kode
+git init
+Perintah ini akan membuat direktori .git di dalam proyek Anda, yang menyimpan semua informasi tentang repositori.
+Menambahkan File ke Staging Area
+
+Setelah membuat atau mengubah file di dalam proyek Anda, tambahkan file-file tersebut ke staging area dengan perintah:
+sh
+Salin kode
+git add nama_file
+Untuk menambahkan semua file yang telah diubah:
+sh
+Salin kode
+git add .
+Membuat Commit
+
+Untuk menyimpan perubahan yang telah ditambahkan ke staging area, buat commit dengan perintah:
+sh
+Salin kode
+git commit -m "Pesan commit yang menjelaskan perubahan"
+Membuat Repositori Remote (misalnya, GitHub)
+
+Buat repositori baru di GitHub (atau platform lain seperti GitLab, Bitbucket).
+Salin URL repositori remote, misalnya https://github.com/username/nama_proyek.git.
+Menambahkan Repositori Remote
+
+Tambahkan repositori remote ke proyek lokal Anda dengan perintah:
+sh
+Salin kode
+git remote add origin https://github.com/username/nama_proyek.git
+Mengirim Perubahan ke Repositori Remote
+
+Untuk mengirim perubahan yang telah di-commit ke repositori remote, gunakan perintah:
+sh
+Salin kode
+git push -u origin master
+Mengambil Perubahan dari Repositori Remote
+
+Untuk mengambil perubahan terbaru dari repositori remote dan menggabungkannya dengan cabang lokal Anda, gunakan perintah:
+sh
+Salin kode
+git pull origin master
+Melihat Status Repositori
+
+Untuk melihat status repositori dan mengetahui file mana yang telah diubah atau belum di-commit, gunakan perintah:
+sh
+Salin kode
+git status
+Melihat Riwayat Commit
+
+Untuk melihat riwayat commit, gunakan perintah:
+sh
+Salin kode
+git log
+Contoh Skenario
+Berikut adalah contoh skenario menggunakan Git untuk proyek sederhana.
+
+1. Inisialisasi Repositori
+sh
+Salin kode
+cd /path/to/your/project
+git init
+2. Menambahkan File dan Membuat Commit Pertama
+sh
+Salin kode
+echo "# My Project" > README.md
+git add README.md
+git commit -m "Menambahkan file README.md"
+3. Menambahkan Repositori Remote dan Mengirim Perubahan
+sh
+Salin kode
+git remote add origin https://github.com/username/nama_proyek.git
+git push -u origin master
+4. Membuat Cabang Baru untuk Fitur
+sh
+Salin kode
+git checkout -b fitur-baru
+# Membuat perubahan pada kode
+git add .
+git commit -m "Menambahkan fitur baru"
+git push origin fitur-baru
+5. Menggabungkan Cabang ke Master
+sh
+Salin kode
+git checkout master
+git pull origin master
+git merge fitur-baru
+git push origin master
+Kesimpulan
+Dengan menggunakan Git sebagai alat kontrol versi, Anda dapat mengelola perubahan dalam kode sumber secara efisien. Git menyediakan mekanisme untuk bekerja secara kolaboratif, melacak perubahan, dan mengelola berbagai versi dari proyek Anda. Ini sangat berguna dalam pengembangan perangkat lunak modern yang melibatkan banyak pengembang dan perubahan yang sering terjadi. 
+
+</br>
+</pre>
